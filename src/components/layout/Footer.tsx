@@ -4,6 +4,7 @@ import { FaXTwitter as Twitter } from "react-icons/fa6";
 import { personalInfo } from "../../data/resume";
 import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
 import { useRef } from "react";
+import { SandEffect } from "../ui/SandEffect";
 
 export const Footer = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -27,6 +28,8 @@ export const Footer = () => {
 
       {/* Massive Typo Art */}
       <div className="w-full max-w-[100vw] flex flex-col items-center justify-center pointer-events-none select-none mb-32 px-4 overflow-hidden relative">
+        {/* Sand Particle Layer */}
+        <SandEffect />
         <div className="flex flex-col items-center justify-center relative z-10 w-full">
           <motion.h1
             className="font-black uppercase text-transparent bg-clip-text tracking-tighter cursor-default"
