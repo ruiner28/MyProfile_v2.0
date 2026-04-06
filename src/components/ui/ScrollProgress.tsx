@@ -27,7 +27,7 @@ export const ScrollProgress = () => {
   return (
     <motion.div
       style={{ opacity, scale: isLaunching ? 1.05 : 1 }}
-      className="fixed bottom-8 right-8 z-50 flex items-center justify-center cursor-none group"
+      className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 flex items-center justify-center cursor-none group"
       onClick={scrollToTop}
     >
       <motion.div 

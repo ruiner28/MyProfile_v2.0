@@ -27,7 +27,7 @@ export const Footer = () => {
     >
 
       {/* Massive Typo Art */}
-      <div className="w-full max-w-[100vw] flex flex-col items-center justify-center pointer-events-none select-none mb-32 px-4 overflow-hidden relative">
+      <div className="w-full max-w-[100vw] flex flex-col items-center justify-center pointer-events-none select-none mb-16 md:mb-32 px-4 overflow-hidden relative">
         {/* Sand Particle Layer */}
         <SandEffect />
         <div className="flex flex-col items-center justify-center relative z-10 w-full">
@@ -57,7 +57,7 @@ export const Footer = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-fit text-center mt-[1vw]">
           <div className="relative group cursor-default">
             <div className="absolute inset-0 bg-white/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-            <p className="relative text-white uppercase tracking-[0.4em] text-xs md:text-sm lg:text-base font-semibold backdrop-blur-md px-8 py-3.5 border border-white/10 rounded-full bg-white/[0.03] shadow-2xl transition-colors hover:bg-white/[0.08] hover:border-white/30 truncate whitespace-nowrap">
+            <p className="relative text-white uppercase tracking-[0.15em] md:tracking-[0.4em] text-[10px] md:text-sm lg:text-base font-semibold backdrop-blur-md px-4 md:px-8 py-2.5 md:py-3.5 border border-white/10 rounded-full bg-white/[0.03] shadow-2xl transition-colors hover:bg-white/[0.08] hover:border-white/30">
               Transitioning into AI Applied Roles
             </p>
           </div>

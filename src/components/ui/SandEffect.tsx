@@ -34,8 +34,8 @@ export const SandEffect = () => {
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
-    // Initialize sand grains
-    const count = 600;
+    // Fewer particles on mobile for performance
+    const count = window.innerWidth < 768 ? 200 : 600;
     const grains: Grain[] = [];
     for (let i = 0; i < count; i++) {
       grains.push(createGrain(canvas.width, canvas.height));

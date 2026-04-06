@@ -4,24 +4,30 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 export const CustomCursor = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isPointer, setIsPointer] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
-  // Extremely snappy but smooth spring physics
   const springConfig = { damping: 20, stiffness: 600, mass: 0.05 };
   const smoothX = useSpring(cursorX, springConfig);
   const smoothY = useSpring(cursorY, springConfig);
 
   useEffect(() => {
+    // Detect touch devices
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia("(pointer: coarse)").matches || window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
     const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX - 8); // Offset by half width
+      cursorX.set(e.clientX - 8);
       cursorY.set(e.clientY - 8);
     };
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      // Check if hovering over clickable elements
       if (
         target.tagName.toLowerCase() === "a" ||
         target.tagName.toLowerCase() === "button" ||
@@ -47,11 +53,12 @@ export const CustomCursor = () => {
     return () => {
       window.removeEventListener("mousemove", moveCursor);
       window.removeEventListener("mouseover", handleMouseOver);
+      window.removeEventListener("resize", checkMobile);
     };
   }, [cursorX, cursorY]);
 
-  // If mobile, we usually want to hide the custom cursor completely
-  // For simplicity, we just rely on the CSS hiding the default cursor and the JS doing its job.
+  // Hide completely on mobile/touch
+  if (isMobile) return null;
 
   return (
     <>

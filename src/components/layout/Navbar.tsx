@@ -33,8 +33,8 @@ export const Navbar = () => {
         className={cn(
           "fixed z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
           isScrolled
-            ? "top-4 left-4 right-4 lg:top-6 lg:left-1/2 lg:right-auto lg:-translate-x-1/2 lg:w-max max-w-full py-3 px-6 bg-black/40 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] rounded-2xl lg:rounded-full"
-            : "top-0 left-0 right-0 py-6 px-6 lg:px-8 bg-transparent"
+            ? "top-3 left-3 right-3 md:top-4 md:left-4 md:right-4 lg:top-6 lg:left-1/2 lg:right-auto lg:-translate-x-1/2 lg:w-max max-w-full py-2.5 px-4 md:py-3 md:px-6 bg-black/60 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] rounded-2xl lg:rounded-full"
+            : "top-0 left-0 right-0 py-4 px-4 md:py-6 md:px-6 lg:px-8 bg-transparent"
         )}
       >
         <div className={cn("mx-auto flex items-center justify-between", !isScrolled && "max-w-6xl w-full", isScrolled && "gap-12")}>

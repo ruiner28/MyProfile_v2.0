@@ -76,9 +76,12 @@
     box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15), 0 10px 40px rgba(0, 0, 0, 0.4);
   }
 
-  a,
-  button {
-    cursor: none;
+  /* Only hide default cursor on devices with a fine pointer (mouse) */
+  @media (pointer: fine) {
+    a,
+    button {
+      cursor: none;
+    }
   }
 
   .text-gradient {

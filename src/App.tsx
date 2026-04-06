@@ -68,7 +68,7 @@ function App() {
       </AnimatePresence>
 
       <SmoothScroll>
-        <div className="relative w-full min-h-screen text-gray-400 bg-[#030303] overflow-hidden selection:bg-indigo-500/30 cursor-none">
+        <div className="relative w-full min-h-screen text-gray-400 bg-[#030303] overflow-hidden selection:bg-indigo-500/30 md:cursor-none">
 
           {/* Immersive Depth Background */}
           <div className="pointer-events-none fixed inset-0 z-0">
@@ -77,7 +77,7 @@ function App() {
           </div>
 
           <motion.div
-            className="fixed left-[-80px] z-0 w-[400px] h-[400px]"
+            className="fixed left-[-80px] z-0 w-[400px] h-[400px] hidden md:block"
             style={{ y: sphereY, opacity: sphereOpacity }}
           >
             <TagSphere />
