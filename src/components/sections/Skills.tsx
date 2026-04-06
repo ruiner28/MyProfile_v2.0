@@ -47,18 +47,18 @@ export const Skills = () => {
           const items = skills[category as keyof typeof skills] || [];
           const theme = getCategoryTheme(category);
           const Icon = theme.icon;
-          
+
           return (
-            <GlassCard 
-              key={category} 
-              hoverEffect 
+            <GlassCard
+              key={category}
+              hoverEffect
               className={`relative overflow-hidden group p-5 lg:p-6 flex flex-col h-full bg-gradient-to-br from-white/[0.05] to-transparent border-white/10 ${theme.span}`}
             >
               {/* Giant Background Watermark */}
               <div className="absolute -right-6 -bottom-6 opacity-[0.03] group-hover:opacity-10 group-hover:-translate-y-2 group-hover:-translate-x-2 transition-all duration-700 pointer-events-none z-0">
                 <Icon className={`w-32 h-32 ${theme.color}`} strokeWidth={1} />
               </div>
-              
+
               <div className="flex items-center gap-3 mb-6 relative z-20">
                 <div className="p-2 rounded-lg bg-black/40 border border-white/10 shadow-inner">
                   <Icon className={`w-4 h-4 ${theme.color}`} />
@@ -67,8 +67,8 @@ export const Skills = () => {
                   {theme.title}
                 </h3>
               </div>
-              
-              <motion.div 
+
+              <motion.div
                 variants={container}
                 initial="hidden"
                 whileInView="show"

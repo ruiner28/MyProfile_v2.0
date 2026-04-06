@@ -19,29 +19,29 @@ export const Footer = () => {
   };
 
   return (
-    <footer 
+    <footer
       ref={containerRef}
       onMouseMove={handleMouseMove}
       className="w-full pt-24 pb-8 overflow-hidden flex flex-col items-center relative z-20 bg-[#030303]"
     >
-      
+
       {/* Massive Typo Art */}
       <div className="w-full max-w-[100vw] flex flex-col items-center justify-center pointer-events-none select-none mb-32 px-4 overflow-hidden relative">
         <div className="flex flex-col items-center justify-center relative z-10 w-full">
-          <motion.h1 
+          <motion.h1
             className="font-black uppercase text-transparent bg-clip-text tracking-tighter cursor-default"
-            style={{ 
-              fontSize: "16vw", 
+            style={{
+              fontSize: "16vw",
               lineHeight: 0.85,
               backgroundImage: useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(255,255,255,1), rgba(255,255,255,0.18))`
             }}
           >
             SOFTWARE
           </motion.h1>
-          <motion.h1 
+          <motion.h1
             className="font-black uppercase text-transparent bg-clip-text tracking-tighter -mt-[1vw] cursor-default"
-            style={{ 
-              fontSize: "16vw", 
+            style={{
+              fontSize: "16vw",
               lineHeight: 0.85,
               backgroundImage: useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(255,255,255,1), rgba(255,255,255,0.18))`
             }}
@@ -49,7 +49,7 @@ export const Footer = () => {
             ENGINEER
           </motion.h1>
         </div>
-        
+
         {/* Crisp AI Overlay Text */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-fit text-center mt-[1vw]">
           <div className="relative group cursor-default">
@@ -62,7 +62,7 @@ export const Footer = () => {
       </div>
 
       <div className="w-full max-w-6xl mx-auto px-6 lg:px-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-6">
-        
+
         <div className="flex flex-col gap-2">
           <h3 className="text-xl font-medium text-white tracking-tight">{personalInfo.name}</h3>
           <p className="text-sm text-gray-400">Built with care and clean code.</p>

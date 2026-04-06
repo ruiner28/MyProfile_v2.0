@@ -7,7 +7,7 @@ export const Achievements = () => {
   return (
     <Section id="achievements">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        
+
         {/* Education */}
         <div>
           <div className="flex items-center gap-3 mb-8">
@@ -19,7 +19,7 @@ export const Achievements = () => {
               <div key={idx} className="relative pl-8">
                 {/* Glowing Node */}
                 <div className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.8)]" />
-                
+
                 <GlassCard className="p-6 md:p-8">
                   <h3 className="text-xl font-semibold text-white mb-1">{edu.degree}</h3>
                   <div className="text-indigo-400 font-medium mb-4">{edu.institution}</div>
@@ -46,7 +46,7 @@ export const Achievements = () => {
               <div key={idx} className="relative pl-8 group">
                 {/* Glowing Node */}
                 <div className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-cyan-500 shadow-[0_0_10px_rgba(6,182,212,0.8)]" />
-                
+
                 <GlassCard hoverEffect className="p-6 md:p-8">
                   <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-cyan-400 transition-colors">
                     {achievement.title}

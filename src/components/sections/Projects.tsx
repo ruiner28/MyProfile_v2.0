@@ -1,11 +1,16 @@
+import { useState } from "react";
 import { Section } from "../ui/Section";
 import { GlassCard } from "../ui/GlassCard";
 import { Button } from "../ui/Button";
 import { ExternalLink } from "lucide-react";
 import { FaGithub as Github } from "react-icons/fa";
 import { projects, personalInfo } from "../../data/resume";
+import { ProjectModal } from "../ui/ProjectModal";
+import { AnimatePresence } from "framer-motion";
 
 export const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+
   return (
     <Section id="projects">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 relative z-10">
@@ -26,13 +31,13 @@ export const Projects = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
         {projects.map((project, idx) => (
-          <GlassCard 
-            key={idx} 
-            hoverEffect 
+          <GlassCard
+            key={idx}
+            hoverEffect
             className="group flex flex-col h-full !p-0 overflow-hidden cursor-pointer"
-            onClick={() => window.open(project.live, '_blank', 'noopener,noreferrer')}
+            onClick={() => setSelectedProject(project)}
           >
-            
+
             {/* Visual Image/Mockup Placeholder */}
             <div className="w-full h-64 bg-gradient-to-br from-indigo-500/10 to-cyan-500/5 relative overflow-hidden border-b border-white/5">
               {project.image ? (
@@ -60,19 +65,19 @@ export const Projects = () => {
                   {project.title}
                 </h3>
                 <div className="flex items-center gap-3 relative z-20">
-                  <a 
-                    href={project.github} 
-                    target="_blank" 
-                    rel="noreferrer" 
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer"
                     className="text-gray-400 hover:text-white transition-colors"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <Github className="w-5 h-5" />
                   </a>
-                  <a 
-                    href={project.live} 
-                    target="_blank" 
-                    rel="noreferrer" 
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noreferrer"
                     className="text-gray-400 hover:text-white transition-colors"
                     onClick={(e) => e.stopPropagation()}
                   >
@@ -80,7 +85,7 @@ export const Projects = () => {
                   </a>
                 </div>
               </div>
-              
+
               <p className="text-gray-400 mb-6 flex-grow leading-relaxed">
                 {project.description}
               </p>
@@ -102,10 +107,19 @@ export const Projects = () => {
                 ))}
               </div>
             </div>
-            
+
           </GlassCard>
         ))}
       </div>
+
+      <AnimatePresence>
+        {selectedProject && (
+          <ProjectModal
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+          />
+        )}
+      </AnimatePresence>
     </Section>
   );
 };

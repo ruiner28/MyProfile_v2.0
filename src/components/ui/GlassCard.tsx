@@ -2,6 +2,7 @@ import { forwardRef, useRef } from "react";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import type { HTMLMotionProps } from "framer-motion";
 import { cn } from "../../utils";
+import { uiAudio } from "../../utils/audio";
 
 interface GlassCardProps extends HTMLMotionProps<"div"> {
   hoverEffect?: boolean;
@@ -24,12 +25,21 @@ export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
     return (
       <motion.div
         ref={(r) => {
-
           localRef.current = r;
           if (typeof ref === "function") ref(r);
           else if (ref) ref.current = r;
         }}
         onMouseMove={handleMouseMove}
+        onMouseEnter={(e) => {
+          if (hoverEffect) uiAudio.playHoverTick();
+          if (props.onMouseEnter) props.onMouseEnter(e);
+        }}
+        onClick={(e) => {
+          if (props.onClick) {
+            uiAudio.playClickPop();
+            props.onClick(e);
+          }
+        }}
         className={cn(
           "glass-card relative overflow-hidden p-6 md:p-8 group",
           hoverEffect ? "hover:-translate-y-1 hover:shadow-2xl transition-all duration-500" : "",

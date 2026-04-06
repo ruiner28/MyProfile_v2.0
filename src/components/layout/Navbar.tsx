@@ -57,7 +57,7 @@ export const Navbar = () => {
                 </li>
               ))}
             </ul>
-            
+
             <div className="flex items-center gap-4 border-l border-white/10 pl-6">
               <a href={personalInfo.github} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <Github className="w-5 h-5" />

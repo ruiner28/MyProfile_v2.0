@@ -19,7 +19,7 @@ export const Experience = () => {
           <div key={idx} className="relative">
             {/* Timeline Dot */}
             <div className="absolute -left-[41px] md:-left-[57px] top-6 w-5 h-5 rounded-full bg-black border-2 border-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]" />
-            
+
             <GlassCard hoverEffect className="p-8">
               <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
                 <div>

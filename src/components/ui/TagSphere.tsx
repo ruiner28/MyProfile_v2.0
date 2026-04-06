@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
 const texts = [
-  "TypeScript", "React", "Next.js", "Node.js", "NestJS", 
-  "Python", "AWS", "Docker", "PostgreSQL", "Supabase", 
-  "GraphQL", "Redis", "Kafka", "LLMs", "Genkit", 
+  "TypeScript", "React", "Next.js", "Node.js", "NestJS",
+  "Python", "AWS", "Docker", "PostgreSQL", "Supabase",
+  "GraphQL", "Redis", "Kafka", "LLMs", "Genkit",
   "Vector Search", "Spring Boot", "TailwindCSS", "Framer"
 ];
 
@@ -25,7 +25,7 @@ const computePositions = (n: number, radius: number) => {
 export const TagSphere = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [positions, setPositions] = useState<{ x: number, y: number, z: number }[]>([]);
-  
+
   // Rotation states
   const rotationX = useRef(0);
   const rotationY = useRef(0);
@@ -101,16 +101,16 @@ export const TagSphere = () => {
 
   return (
     <div className="absolute inset-0 pointer-events-none opacity-80 mix-blend-screen scale-75 md:scale-100 z-0">
-      <div 
-        ref={containerRef} 
+      <div
+        ref={containerRef}
         className="relative w-full h-full flex items-center justify-center perspective-[1000px]"
       >
         {positions.length > 0 && texts.map((text) => (
-          <span 
-            key={text} 
+          <span
+            key={text}
             className="absolute text-sm md:text-base font-mono font-bold text-indigo-300 whitespace-nowrap drop-shadow-[0_0_12px_rgba(129,140,248,0.9)]"
-            style={{ 
-              top: '50%', 
+            style={{
+              top: '50%',
               left: '50%',
               marginTop: '-0.5rem',
               marginLeft: '-1rem'

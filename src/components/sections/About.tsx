@@ -7,12 +7,12 @@ export const About = () => {
     <Section id="about">
       {/* Compact Glass Console Shield */}
       <GlassCard className="relative overflow-hidden p-6 md:p-8 lg:p-10 max-w-4xl mx-auto bg-black/40 backdrop-blur-3xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] z-20">
-        
+
         {/* Subtle Console Background Glow */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none -z-10" />
 
         <div className="flex flex-col gap-8">
-          
+
           {/* Header Console Strip */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-white/10">
             <div>
@@ -40,7 +40,7 @@ export const About = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Minimal Avatar / Identity Marker */}
             <div className="hidden lg:flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/10 border border-white/10 shadow-inner">
               <Sparkles className="w-6 h-6 text-indigo-300" />
@@ -56,7 +56,7 @@ export const About = () => {
 
           {/* Core Pillars Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6 border-t border-white/10">
-            
+
             <div className="flex flex-col gap-3 p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition-colors relative overflow-hidden group">
               <div className="absolute top-0 right-0 p-3 opacity-5 pointer-events-none group-hover:scale-110 transition-transform duration-500">
                 <Cpu className="w-16 h-16" />
@@ -97,7 +97,7 @@ export const About = () => {
             </div>
 
           </div>
-          
+
         </div>
       </GlassCard>
     </Section>

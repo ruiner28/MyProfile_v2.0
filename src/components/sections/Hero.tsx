@@ -5,6 +5,7 @@ import { Badge } from "../ui/Badge";
 import { personalInfo } from "../../data/resume";
 import { Magnetic } from "../ui/Magnetic";
 import { GridBackground } from "../ui/GridBackground";
+import { ParticleHero } from "../ui/ParticleHero";
 
 export const Hero = () => {
   const container = {
@@ -25,13 +26,16 @@ export const Hero = () => {
       {/* Infinite Cinematic Engineering Grid */}
       <GridBackground />
 
+      {/* WebGL Particle Physics Field */}
+      <ParticleHero />
+
       <div className="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-center text-center z-10 w-full mt-10 md:mt-0 relative">
-        
+
         {/* Core text glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[50%] bg-indigo-500/10 blur-[140px] rounded-[100%] pointer-events-none" />
 
         <motion.div variants={container} initial="hidden" animate="show" className="flex flex-col items-center relative z-10">
-          
+
           <motion.div variants={item}>
             <Badge className="mb-8 px-4 py-1.5 flex items-center gap-2 border-white/10 bg-white/5 backdrop-blur-xl">
               <span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_12px_rgba(34,197,94,0.8)] animate-pulse" />
@@ -82,7 +86,7 @@ export const Hero = () => {
               </a>
             </Magnetic>
           </motion.div>
-          
+
         </motion.div>
       </div>
     </section>
