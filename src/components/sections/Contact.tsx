@@ -18,12 +18,12 @@ export const Contact = () => {
       <GlassCard className="relative overflow-hidden p-10 md:p-16 text-center max-w-4xl mx-auto border-white/10 bg-gradient-to-b from-white/[0.03] to-transparent">
 
         {/* Decorative background glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-indigo-500/10 blur-[100px] pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-orange-500/10 blur-[100px] pointer-events-none" />
 
         {/* Beacon Center */}
         <div className="relative z-10 flex flex-col items-center">
-          <div className="w-16 h-16 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center mb-8 shadow-[0_0_30px_rgba(99,102,241,0.2)]">
-            <Mail className="w-8 h-8 text-indigo-400" />
+          <div className="w-16 h-16 rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center mb-8 shadow-[0_0_30px_rgba(255,100,0,0.2)]">
+            <Mail className="w-8 h-8 text-orange-400" />
           </div>
 
           <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-6">
@@ -39,13 +39,13 @@ export const Contact = () => {
             {/* Click to Copy Email Container */}
             <div
               onClick={handleCopyEmail}
-              className="group relative flex items-center justify-between w-full sm:w-auto flex-1 bg-black/40 hover:bg-white/5 border border-white/10 hover:border-indigo-500/30 rounded-xl px-6 py-4 cursor-pointer transition-all duration-300"
+              className="group relative flex items-center justify-between w-full sm:w-auto flex-1 bg-black/40 hover:bg-white/5 border border-white/10 hover:border-orange-500/30 rounded-xl px-6 py-4 cursor-pointer transition-all duration-300"
             >
               <span className="text-gray-300 font-mono text-sm md:text-base mr-6">{personalInfo.email}</span>
               {copied ? (
                 <CheckCircle2 className="w-5 h-5 text-emerald-400" />
               ) : (
-                <Copy className="w-5 h-5 text-gray-500 group-hover:text-indigo-400 transition-colors" />
+                <Copy className="w-5 h-5 text-gray-500 group-hover:text-orange-400 transition-colors" />
               )}
             </div>
 

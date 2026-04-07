@@ -32,20 +32,20 @@ export const Hero = () => {
       <div className="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-center text-center z-10 w-full mt-10 md:mt-0 relative">
 
         {/* Core text glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[50%] bg-indigo-500/10 blur-[140px] rounded-[100%] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[50%] bg-orange-500/15 blur-[140px] rounded-[100%] pointer-events-none" />
 
         <motion.div variants={container} initial="hidden" animate="show" className="flex flex-col items-center relative z-10">
 
           <motion.div variants={item}>
             <Badge className="mb-8 px-4 py-1.5 flex items-center gap-2 border-white/10 bg-white/5 backdrop-blur-xl">
-              <span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_12px_rgba(34,197,94,0.8)] animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-fuchsia-500 shadow-[0_0_12px_rgba(217,70,239,0.8)] animate-pulse" />
               <span className="text-gray-300 font-medium tracking-wide">Available for Opportunities</span>
             </Badge>
           </motion.div>
 
           <motion.h1
             variants={item}
-            className="text-5xl md:text-7xl font-bold text-white tracking-tighter lg:-tracking-[0.02em] mb-6 max-w-4xl leading-[1.1]"
+            className="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6 max-w-3xl leading-[1.1]"
           >
             {personalInfo.heroHeadline}
           </motion.h1>

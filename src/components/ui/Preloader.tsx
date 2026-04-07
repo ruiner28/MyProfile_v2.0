@@ -14,37 +14,14 @@ export const Preloader = ({ onComplete }: PreloaderProps) => {
     const steps = duration / intervalTime;
     let currentStep = 0;
 
-    // Immediately snap the page to the bottom under the black curtain
-    const scrollToBottom = () => {
-      const maxScroll = Math.max(
-        document.body.scrollHeight,
-        document.documentElement.scrollHeight
-      );
-      if (window.customLenis) {
-        window.customLenis.scrollTo(maxScroll, { immediate: true });
-      } else {
-        window.scrollTo(0, maxScroll);
-      }
-    };
-
-    scrollToBottom();
-
     const timer = setInterval(() => {
-      // Re-enforce bottom snap aggressively while loading
-      if (currentStep < 20) {
-        scrollToBottom();
-      }
-
       currentStep++;
       const nextProgress = Math.min(Math.round((currentStep / steps) * 100), 100);
       setProgress(nextProgress);
 
       if (currentStep >= steps) {
         clearInterval(timer);
-        // Final snap + brief pause before revealing
-        scrollToBottom();
         setTimeout(() => {
-          scrollToBottom();
           onComplete();
         }, 400);
       }

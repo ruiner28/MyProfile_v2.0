@@ -9,7 +9,7 @@ export const About = () => {
       <GlassCard className="relative overflow-hidden p-6 md:p-8 lg:p-10 max-w-4xl mx-auto bg-black/40 backdrop-blur-3xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] z-20">
 
         {/* Subtle Console Background Glow */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none -z-10" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-500/10 rounded-full blur-[100px] pointer-events-none -z-10" />
 
         <div className="flex flex-col gap-8">
 
@@ -42,14 +42,14 @@ export const About = () => {
             </div>
 
             {/* Minimal Avatar / Identity Marker */}
-            <div className="hidden lg:flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/10 border border-white/10 shadow-inner">
-              <Sparkles className="w-6 h-6 text-indigo-300" />
+            <div className="hidden lg:flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br from-orange-500/20 to-fuchsia-500/10 border border-white/10 shadow-inner">
+              <Sparkles className="w-6 h-6 text-orange-300" />
             </div>
           </div>
 
           {/* Main Editorial Typography */}
           <div className="text-base md:text-lg font-light leading-relaxed text-gray-300 max-w-3xl">
-            <span className="text-white font-medium">Software Engineer transitioning into applied AI</span>, combining 2+ years of enterprise systems experience with hands-on production work in <span className="text-indigo-400 font-semibold drop-shadow-[0_0_10px_rgba(99,102,241,0.5)]">LLM integration</span> and real-time architectures.
+            <span className="text-white font-medium">Software Engineer transitioning into applied AI</span>, combining 2+ years of enterprise systems experience with hands-on production work in <span className="text-orange-400 font-semibold drop-shadow-[0_0_10px_rgba(255,100,0,0.5)]">LLM integration</span> and real-time architectures.
             <br /><br />
             I specialize in <span className="text-white font-medium">taking complex products from zero to one</span>. Whether architecting high-availability backend microservices or shipping polished, production-ready AI tools, my absolute focus is on driving measurable business value and delivering seamless, reliable experiences to end users.
           </div>
@@ -61,7 +61,7 @@ export const About = () => {
               <div className="absolute top-0 right-0 p-3 opacity-5 pointer-events-none group-hover:scale-110 transition-transform duration-500">
                 <Cpu className="w-16 h-16" />
               </div>
-              <div className="p-2 rounded-lg bg-indigo-500/10 text-indigo-400 w-fit">
+              <div className="p-2 rounded-lg bg-orange-500/10 text-orange-400 w-fit">
                 <Cpu className="w-5 h-5" />
               </div>
               <div>

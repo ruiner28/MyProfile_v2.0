@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", system-ui, sans-serif;
+  --font-sans: "Space Grotesk", system-ui, sans-serif;
+  --font-display: "Syne", system-ui, sans-serif;
   --color-dark: #050505;
   --color-glass: rgba(255, 255, 255, 0.03);
   --color-glass-strong: rgba(255, 255, 255, 0.08);
@@ -29,10 +30,11 @@
   h5,
   h6 {
     color: #ffffff;
+    font-family: var(--font-display);
   }
 
   ::selection {
-    background: rgba(99, 102, 241, 0.4);
+    background: rgba(255, 100, 0, 0.4);
     color: #ffffff;
   }
 }

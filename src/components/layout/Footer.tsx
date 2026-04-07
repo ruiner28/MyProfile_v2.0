@@ -32,20 +32,20 @@ export const Footer = () => {
         <SandEffect />
         <div className="flex flex-col items-center justify-center relative z-10 w-full">
           <motion.h1
-            className="font-black uppercase text-transparent bg-clip-text tracking-tighter cursor-default"
+            className="font-black uppercase text-transparent bg-clip-text tracking-tighter cursor-default w-full text-center"
             style={{
-              fontSize: "16vw",
-              lineHeight: 0.85,
+              fontSize: "10vw",
+              lineHeight: 0.9,
               backgroundImage: useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(255,255,255,1), rgba(255,255,255,0.18))`
             }}
           >
             SOFTWARE
           </motion.h1>
           <motion.h1
-            className="font-black uppercase text-transparent bg-clip-text tracking-tighter -mt-[1vw] cursor-default"
+            className="font-black uppercase text-transparent bg-clip-text tracking-tighter cursor-default w-full text-center"
             style={{
-              fontSize: "16vw",
-              lineHeight: 0.85,
+              fontSize: "10vw",
+              lineHeight: 0.9,
               backgroundImage: useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(255,255,255,1), rgba(255,255,255,0.18))`
             }}
           >
@@ -54,7 +54,7 @@ export const Footer = () => {
         </div>
 
         {/* Crisp AI Overlay Text */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-fit text-center mt-[1vw]">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-fit text-center -mt-[0.1vw]">
           <div className="relative group cursor-default">
             <div className="absolute inset-0 bg-white/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
             <p className="relative text-white uppercase tracking-[0.15em] md:tracking-[0.4em] text-[10px] md:text-sm lg:text-base font-semibold backdrop-blur-md px-4 md:px-8 py-2.5 md:py-3.5 border border-white/10 rounded-full bg-white/[0.03] shadow-2xl transition-colors hover:bg-white/[0.08] hover:border-white/30">

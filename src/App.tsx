@@ -28,18 +28,13 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(true);
 
-  // Cinematic Intro: Scroll from Footer to Hero after curtain drop
+  // Ensure page starts at top after preloader
   useEffect(() => {
     if (!isLoading) {
-      // Wait for the curtain to lift (1.2s) + hold on footer for a few seconds
-      const enterTimer = setTimeout(() => {
-        if (window.customLenis) {
-          // Trigger a dramatic smooth scroll to the top over 3.5 seconds
-          window.customLenis.scrollTo(0, { duration: 3.5, easing: (t) => 1 - Math.pow(1 - t, 4) });
-        }
-      }, 2500); // 2.5 second hold at the bottom
-
-      return () => clearTimeout(enterTimer);
+      window.scrollTo(0, 0);
+      if (window.customLenis) {
+        window.customLenis.scrollTo(0, { immediate: true });
+      }
     }
   }, [isLoading]);
 
@@ -68,11 +63,11 @@ function App() {
       </AnimatePresence>
 
       <SmoothScroll>
-        <div className="relative w-full min-h-screen text-gray-400 bg-[#030303] overflow-hidden selection:bg-indigo-500/30 md:cursor-none">
+        <div className="relative w-full min-h-screen text-gray-400 bg-[#030303] overflow-hidden selection:bg-orange-500/30 md:cursor-none">
 
           {/* Immersive Depth Background */}
           <div className="pointer-events-none fixed inset-0 z-0">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-indigo-500/10 rounded-full blur-[120px] opacity-50" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-orange-500/10 rounded-full blur-[120px] opacity-50" />
             <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[150px] opacity-30" />
           </div>
 
