@@ -72,7 +72,7 @@ export const projects = [
     github: "https://github.com/LumoraaWellness",
     live: "https://lumoraa.app/",
     image: "/lumora.png",
-    description: "Stateful LLM backend application with recursive state-compression and context management.",
+    description: "An AI companion for mental wellbeing that remembers your history and offers personalized, context-aware support across every conversation.",
     bullets: [
       "Engineered a recursive state-compression engine dynamically generating session summaries, reducing token payload by 60%.",
       "Architected an async pipeline for real-time sentiment analysis enforcing strict Firestore RBAC."
