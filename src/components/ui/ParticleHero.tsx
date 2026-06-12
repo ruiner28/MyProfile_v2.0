@@ -2,23 +2,22 @@ import { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
+const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
 const ParticleSwarm = () => {
   const pointsRef = useRef<THREE.Points>(null);
 
-  // Mathematical Generation of The Swarm
-  const count = 3000;
+  const count = isMobile ? 1000 : 3000;
   const positions = useMemo(() => {
     const pos = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
-      // Generate coordinates using spherical distribution
-      // Pushing particles out to create a deep ambient volumetric field
       const r = 25 * Math.cbrt(Math.random());
       const theta = Math.random() * 2 * Math.PI;
       const phi = Math.acos(2 * Math.random() - 1);
 
-      pos[i * 3] = r * Math.sin(phi) * Math.cos(theta); // x
-      pos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta); // y
-      pos[i * 3 + 2] = r * Math.cos(phi); // z
+      pos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+      pos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+      pos[i * 3 + 2] = r * Math.cos(phi);
     }
     return pos;
   }, [count]);

@@ -57,7 +57,7 @@ export const projects = [
     techStack: ["NestJS", "Next.js", "Docker", "PostgreSQL", "Supabase", "pgvector", "Genkit"],
     github: "https://github.com/ruiner28/interviewai", // assuming from original structure
     live: "https://interviewai-web.vercel.app/",
-    image: "/interviewAI.png",
+    image: "/interviewAI.webp",
     description: "Multi-modal AI interview platform with real-time feedback and sub-200ms latency.",
     bullets: [
       "Architected a modular monolith and WebSocket driven audio microservice for 6 distinct AI interview modalities.",
@@ -71,7 +71,7 @@ export const projects = [
     techStack: ["TypeScript", "Next.js", "Node.js", "LLMs", "Firebase", "Firestore"],
     github: "https://github.com/LumoraaWellness",
     live: "https://lumoraa.app/",
-    image: "/lumora.png",
+    image: "/lumora.webp",
     description: "An AI companion for mental wellbeing that remembers your history and offers personalized, context-aware support across every conversation.",
     bullets: [
       "Engineered a recursive state-compression engine dynamically generating session summaries, reducing token payload by 60%.",

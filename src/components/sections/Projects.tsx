@@ -44,6 +44,10 @@ export const Projects = () => {
                 <img
                   src={project.image}
                   alt={`${project.title} Interface`}
+                  loading="lazy"
+                  decoding="async"
+                  width={1920}
+                  height={958}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               ) : (

@@ -1,8 +1,9 @@
+import { memo } from "react";
 import { Section } from "../ui/Section";
 import { GlassCard } from "../ui/GlassCard";
 import { experience } from "../../data/resume";
 
-export const Experience = () => {
+export const Experience = memo(() => {
   return (
     <Section id="experience">
       <div className="mb-16">
@@ -56,4 +57,6 @@ export const Experience = () => {
       </div>
     </Section>
   );
-};
+});
+
+Experience.displayName = "Experience";

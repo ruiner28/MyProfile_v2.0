@@ -1,12 +1,10 @@
+import { lazy, Suspense, useEffect, useState } from "react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { Navbar } from "./components/layout/Navbar";
 import { Footer } from "./components/layout/Footer";
 import { Hero } from "./components/sections/Hero";
 import { About } from "./components/sections/About";
 import { Skills } from "./components/sections/Skills";
-import { Projects } from "./components/sections/Projects";
-import { Experience } from "./components/sections/Experience";
-import { Achievements } from "./components/sections/Achievements";
-import { Contact } from "./components/sections/Contact";
 import { AmbientCursorGlow } from "./components/ui/AmbientCursorGlow";
 import { Noise } from "./components/ui/Noise";
 import { SmoothScroll } from "./components/layout/SmoothScroll";
@@ -14,9 +12,20 @@ import { ScrollProgress } from "./components/ui/ScrollProgress";
 import { CustomCursor } from "./components/ui/CustomCursor";
 import { TagSphere } from "./components/ui/TagSphere";
 import { Preloader } from "./components/ui/Preloader";
-import { useEffect, useState } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { uiAudio } from "./utils/audio";
+
+const Projects = lazy(() =>
+  import("./components/sections/Projects").then((m) => ({ default: m.Projects }))
+);
+const Experience = lazy(() =>
+  import("./components/sections/Experience").then((m) => ({ default: m.Experience }))
+);
+const Achievements = lazy(() =>
+  import("./components/sections/Achievements").then((m) => ({ default: m.Achievements }))
+);
+const Contact = lazy(() =>
+  import("./components/sections/Contact").then((m) => ({ default: m.Contact }))
+);
 
 function App() {
   const { scrollYProgress } = useScroll();
@@ -88,10 +97,12 @@ function App() {
             <Hero />
             <About />
             <Skills />
-            <Projects />
-            <Experience />
-            <Achievements />
-            <Contact />
+            <Suspense fallback={null}>
+              <Projects />
+              <Experience />
+              <Achievements />
+              <Contact />
+            </Suspense>
           </main>
 
           <Footer />

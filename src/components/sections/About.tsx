@@ -1,8 +1,9 @@
+import { memo } from "react";
 import { Section } from "../ui/Section";
 import { GlassCard } from "../ui/GlassCard";
 import { Cpu, Rocket, MapPin, GraduationCap, Sparkles } from "lucide-react";
 
-export const About = () => {
+export const About = memo(() => {
   return (
     <Section id="about">
       {/* Compact Glass Console Shield */}
@@ -102,4 +103,6 @@ export const About = () => {
       </GlassCard>
     </Section>
   );
-};
+});
+
+About.displayName = "About";

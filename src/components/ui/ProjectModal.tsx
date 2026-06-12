@@ -61,6 +61,10 @@ export const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
             <img
               src={project.image}
               alt={project.title}
+              loading="lazy"
+              decoding="async"
+              width={1920}
+              height={958}
               className="w-full h-full object-cover object-top opacity-90"
             />
           ) : (

@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { ArrowRight, Mail, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "../ui/Button";
@@ -5,7 +6,10 @@ import { Badge } from "../ui/Badge";
 import { personalInfo } from "../../data/resume";
 import { Magnetic } from "../ui/Magnetic";
 import { GridBackground } from "../ui/GridBackground";
-import { ParticleHero } from "../ui/ParticleHero";
+
+const ParticleHero = lazy(() =>
+  import("../ui/ParticleHero").then((m) => ({ default: m.ParticleHero }))
+);
 
 export const Hero = () => {
   const container = {
@@ -26,8 +30,10 @@ export const Hero = () => {
       {/* Infinite Cinematic Engineering Grid */}
       <GridBackground />
 
-      {/* WebGL Particle Physics Field */}
-      <ParticleHero />
+      {/* WebGL Particle Physics Field — lazy-loaded to keep Three.js out of the critical bundle */}
+      <Suspense fallback={null}>
+        <ParticleHero />
+      </Suspense>
 
       <div className="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-center text-center z-10 w-full mt-10 md:mt-0 relative">
 

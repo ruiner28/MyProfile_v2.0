@@ -19,8 +19,8 @@ export const Preloader = ({ onComplete }: PreloaderProps) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const duration = 1500; // 1.5 seconds total load time
-    const intervalTime = 30;
+    const duration = 800;
+    const intervalTime = 20;
     const steps = duration / intervalTime;
     let currentStep = 0;
 
@@ -31,9 +31,12 @@ export const Preloader = ({ onComplete }: PreloaderProps) => {
 
       if (currentStep >= steps) {
         clearInterval(timer);
-        setTimeout(() => {
-          onComplete();
-        }, 400);
+        const finish = () => setTimeout(onComplete, 300);
+        if (document.readyState === "complete") {
+          finish();
+        } else {
+          window.addEventListener("load", finish, { once: true });
+        }
       }
     }, intervalTime);
 

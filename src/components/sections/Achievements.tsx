@@ -1,9 +1,10 @@
+import { memo } from "react";
 import { Section } from "../ui/Section";
 import { GlassCard } from "../ui/GlassCard";
 import { achievements, education } from "../../data/resume";
 import { Award, GraduationCap } from "lucide-react";
 
-export const Achievements = () => {
+export const Achievements = memo(() => {
   return (
     <Section id="achievements">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -63,4 +64,6 @@ export const Achievements = () => {
       </div>
     </Section>
   );
-};
+});
+
+Achievements.displayName = "Achievements";
