@@ -70,7 +70,7 @@ export const Hero = () => {
               </a>
             </Magnetic>
             <Magnetic>
-              <a href="https://gauravpawar.com" target="_blank" rel="noopener noreferrer" className="block w-full sm:w-auto">
+              <a href="https://my-profile-pi-five.vercel.app" target="_blank" rel="noopener noreferrer" className="block w-full sm:w-auto">
                 <Button variant="secondary" size="lg" className="w-full sm:w-auto gap-2 bg-white/5 border border-white/10 hover:bg-white/10">
                   View Last Work
                   <ExternalLink className="w-4 h-4 ml-1" />

@@ -3,6 +3,7 @@ import { GlassCard } from "../ui/GlassCard";
 import { skills } from "../../data/resume";
 import { motion } from "framer-motion";
 import { Code2, Server, Database, Layout, Cloud, Brain } from "lucide-react";
+import { uiAudio } from "../../utils/audio";
 
 export const Skills = () => {
   // Define mathematically perfect 3x3 grid layout spans
@@ -16,6 +17,18 @@ export const Skills = () => {
       aiMl: { title: "AI & Machine Learning", icon: Brain, span: "col-span-1", color: "text-purple-500" }
     };
     return themes[key] || { title: key, icon: Code2, span: "col-span-1", color: "text-white" };
+  };
+
+  const getCategoryHoverClasses = (key: string) => {
+    const hovers: Record<string, string> = {
+      languages: "hover:border-indigo-500/40 hover:shadow-[0_0_10px_rgba(99,102,241,0.25)] hover:text-indigo-300",
+      backend: "hover:border-emerald-500/40 hover:shadow-[0_0_10px_rgba(16,185,129,0.25)] hover:text-emerald-300",
+      databases: "hover:border-cyan-500/40 hover:shadow-[0_0_10px_rgba(6,182,212,0.25)] hover:text-cyan-300",
+      frontend: "hover:border-pink-500/40 hover:shadow-[0_0_10px_rgba(236,72,153,0.25)] hover:text-pink-300",
+      cloudDevOps: "hover:border-orange-500/40 hover:shadow-[0_0_10px_rgba(249,115,22,0.25)] hover:text-orange-300",
+      aiMl: "hover:border-purple-500/40 hover:shadow-[0_0_10px_rgba(168,85,247,0.25)] hover:text-purple-300"
+    };
+    return hovers[key] || "hover:border-white/30 hover:text-white";
   };
 
   const container = {
@@ -47,6 +60,7 @@ export const Skills = () => {
           const items = skills[category as keyof typeof skills] || [];
           const theme = getCategoryTheme(category);
           const Icon = theme.icon;
+          const hoverClasses = getCategoryHoverClasses(category);
 
           return (
             <GlassCard
@@ -79,7 +93,9 @@ export const Skills = () => {
                   <motion.span
                     key={skill}
                     variants={item}
-                    className="px-2.5 py-1 bg-black/50 backdrop-blur-md border border-white/10 rounded-md text-xs font-medium text-gray-300 hover:bg-white/10 hover:text-white transition-all cursor-default"
+                    whileHover={{ scale: 1.06, y: -1 }}
+                    onMouseEnter={() => uiAudio.playHoverTick()}
+                    className={`px-2.5 py-1 bg-black/50 backdrop-blur-md border border-white/10 rounded-md text-xs font-medium text-gray-300 transition-all duration-300 cursor-default ${hoverClasses}`}
                   >
                     {skill}
                   </motion.span>

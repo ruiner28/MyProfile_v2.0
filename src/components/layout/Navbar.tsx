@@ -6,11 +6,49 @@ import { FaXTwitter as Twitter } from "react-icons/fa6";
 import { Button } from "../ui/Button";
 import { personalInfo } from "../../data/resume";
 import { cn } from "../../utils";
+import { uiAudio } from "../../utils/audio";
+
+const AudioVisualizer = ({ isPlaying }: { isPlaying: boolean }) => {
+  const bars = [0, 1, 2, 3];
+  return (
+    <div className="flex items-center gap-[3px] h-3 w-4 justify-center">
+      {bars.map((bar) => (
+        <motion.div
+          key={bar}
+          className="w-[2px] bg-white rounded-full"
+          animate={
+            isPlaying
+              ? {
+                  height: ["4px", "12px", "4px"],
+                }
+              : {
+                  height: "2px",
+                }
+          }
+          transition={
+            isPlaying
+              ? {
+                  duration: 0.6 + bar * 0.15,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }
+              : {
+                  duration: 0.2,
+                }
+          }
+        />
+      ))}
+    </div>
+  );
+};
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+  const [isAudioEnabled, setIsAudioEnabled] = useState(true);
 
+  // Sync scroll detection for header shape
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -18,6 +56,49 @@ export const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // IntersectionObserver for Scroll-Spy
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "-45% 0px -45% 0px", // triggers when section is near vertical center of screen
+      threshold: 0.05,
+    };
+
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+
+    const sections = ["about", "skills", "projects", "experience", "contact"];
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    // Reset if scrolled back to top
+    const handleScrollTop = () => {
+      if (window.scrollY < 200) {
+        setActiveSection("");
+      }
+    };
+    window.addEventListener("scroll", handleScrollTop);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", handleScrollTop);
+    };
+  }, []);
+
+  const handleToggleAudio = () => {
+    const newState = uiAudio.toggleSound();
+    setIsAudioEnabled(newState);
+  };
 
   const navLinks = [
     { name: "About", href: "#about" },
@@ -45,20 +126,42 @@ export const Navbar = () => {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
-            <ul className="flex items-center gap-6">
-              {navLinks.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-sm font-medium text-gray-400 hover:text-white hover:bg-white/10 px-4 py-2 rounded-full transition-all"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
+            <ul className="flex items-center gap-2">
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.href.substring(1);
+                return (
+                  <li key={link.name} className="relative">
+                    <a
+                      href={link.href}
+                      className={cn(
+                        "relative z-10 text-sm font-medium px-4 py-2 rounded-full transition-colors duration-300 block",
+                        isActive ? "text-white" : "text-gray-400 hover:text-white"
+                      )}
+                    >
+                      {link.name}
+                    </a>
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeNavPill"
+                        className="absolute inset-0 bg-white/10 border border-white/5 rounded-full z-0"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </li>
+                );
+              })}
             </ul>
 
             <div className="flex items-center gap-4 border-l border-white/10 pl-6">
+              {/* Interactive Audio Toggle */}
+              <button
+                onClick={handleToggleAudio}
+                className="p-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full flex items-center justify-center transition-colors cursor-pointer"
+                title={isAudioEnabled ? "Mute interface sounds" : "Unmute interface sounds"}
+              >
+                <AudioVisualizer isPlaying={isAudioEnabled} />
+              </button>
+
               <a href={personalInfo.github} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <Github className="w-5 h-5" />
               </a>
@@ -109,16 +212,27 @@ export const Navbar = () => {
               ))}
             </nav>
             <div className="flex flex-col gap-6 mt-auto">
-              <div className="flex items-center gap-6">
-                <a href={personalInfo.github} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                  <Github className="w-6 h-6" />
-                </a>
-                <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                  <Linkedin className="w-6 h-6" />
-                </a>
-                <a href={personalInfo.twitter} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                  <Twitter className="w-6 h-6" />
-                </a>
+              <div className="flex items-center justify-between border-t border-white/10 pt-6">
+                <div className="flex items-center gap-6">
+                  <a href={personalInfo.github} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                    <Github className="w-6 h-6" />
+                  </a>
+                  <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                    <Linkedin className="w-6 h-6" />
+                  </a>
+                  <a href={personalInfo.twitter} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                    <Twitter className="w-6 h-6" />
+                  </a>
+                </div>
+
+                {/* Mobile Audio Toggle */}
+                <button
+                  onClick={handleToggleAudio}
+                  className="p-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full flex items-center justify-center transition-colors"
+                  title={isAudioEnabled ? "Mute interface sounds" : "Unmute interface sounds"}
+                >
+                  <AudioVisualizer isPlaying={isAudioEnabled} />
+                </button>
               </div>
               <a href={personalInfo.resume} target="_blank" rel="noreferrer" className="w-full">
                 <Button variant="primary" className="w-full gap-2">

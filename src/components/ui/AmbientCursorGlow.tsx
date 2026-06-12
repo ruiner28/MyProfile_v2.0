@@ -1,13 +1,13 @@
 import { useEffect } from "react";
-import { motion, useMotionValue, useSpring, useMotionTemplate } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export const AmbientCursorGlow = () => {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
+  const mouseX = useMotionValue(-1000);
+  const mouseY = useMotionValue(-1000);
 
   // Smooth springs for a fluid, floating feel
-  const smoothX = useSpring(mouseX, { stiffness: 40, damping: 20, mass: 0.5 });
-  const smoothY = useSpring(mouseY, { stiffness: 40, damping: 20, mass: 0.5 });
+  const smoothX = useSpring(mouseX, { stiffness: 60, damping: 25, mass: 0.4 });
+  const smoothY = useSpring(mouseY, { stiffness: 60, damping: 25, mass: 0.4 });
 
   useEffect(() => {
     const onMouseMove = (e: MouseEvent) => {
@@ -20,9 +20,10 @@ export const AmbientCursorGlow = () => {
 
   return (
     <motion.div
-      className="pointer-events-none fixed inset-0 z-30 transition-opacity"
+      className="pointer-events-none fixed top-0 left-0 w-[600px] h-[600px] bg-indigo-500/5 rounded-full blur-[120px] z-30 -translate-x-1/2 -translate-y-1/2"
       style={{
-        background: useMotionTemplate`radial-gradient(600px circle at ${smoothX}px ${smoothY}px, rgba(99, 102, 241, 0.05), transparent 80%)`,
+        x: smoothX,
+        y: smoothY,
       }}
     />
   );
