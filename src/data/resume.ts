@@ -70,7 +70,7 @@ export const projects = [
     period: "09/2025 – Present",
     techStack: ["TypeScript", "Next.js", "Node.js", "LLMs", "Firebase", "Firestore"],
     github: "https://github.com/LumoraaWellness",
-    live: "https://lumoraa.app/",
+    live: "https://lumora-app-ivory.vercel.app/",
     image: "/lumora.webp",
     description: "An AI companion for mental wellbeing that remembers your history and offers personalized, context-aware support across every conversation.",
     bullets: [
